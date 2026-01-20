@@ -1,3 +1,4 @@
-provider "scaffolding" {
-  # example configuration here
+provider "hrobot" {
+  username = "webservice_username"
+  password = "supersecretpassword"
 }

@@ -1,3 +1,6 @@
+// Copyright (c) HashiCorp, Inc.
+// SPDX-License-Identifier: MPL-2.0
+
 package client
 
 import (
@@ -67,7 +70,7 @@ func (c *HetznerRobotClient) doRequest(ctx context.Context, method string, path 
 	}
 
 	if !codeIsInExpected(response.StatusCode, expectedStatusCodes) {
-		return nil, fmt.Errorf("The webservice returned an unexpted return code %d with response: %s", response.StatusCode, string(responseBytes))
+		return nil, fmt.Errorf("the webservice returned an unexpted return code %d with response: %s", response.StatusCode, string(responseBytes))
 	}
 
 	return responseBytes, nil

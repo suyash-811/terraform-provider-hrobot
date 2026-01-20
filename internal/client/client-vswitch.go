@@ -1,3 +1,6 @@
+// Copyright (c) HashiCorp, Inc.
+// SPDX-License-Identifier: MPL-2.0
+
 package client
 
 import (
@@ -39,7 +42,7 @@ type HRobotVSwitchCloudNetwork struct {
 
 func (c *HetznerRobotClient) GetVSwitch(ctx context.Context, vSwitchID int64) (*HRobotVSwitch, error) {
 	if vSwitchID == 0 {
-		return nil, fmt.Errorf("vSwitchID cannot be empty.")
+		return nil, fmt.Errorf("vSwitchID cannot be empty")
 	}
 
 	var vSwitch HRobotVSwitch

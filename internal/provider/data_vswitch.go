@@ -1,3 +1,6 @@
+// Copyright (c) HashiCorp, Inc.
+// SPDX-License-Identifier: MPL-2.0
+
 package provider
 
 import (
@@ -28,69 +31,88 @@ func (d *vSwitchDataSource) Metadata(_ context.Context, req datasource.MetadataR
 
 func (d *vSwitchDataSource) Schema(_ context.Context, _ datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		Description: "Fetches vswitch information.",
 		Attributes: map[string]schema.Attribute{
 			"id": schema.Int64Attribute{
-				Required: true,
+				Description: "vSwitch ID.",
+				Required:    true,
 			},
 			"name": schema.StringAttribute{
-				Computed: true,
+				Description: "vSwitch name.",
+				Computed:    true,
 			},
 			"vlan": schema.Int64Attribute{
-				Computed: true,
+				Description: "VLAN assigned to vSwitch.",
+				Computed:    true,
 			},
 			"cancelled": schema.BoolAttribute{
-				Computed: true,
+				Description: "vSwitch cancellation status.",
+				Computed:    true,
 			},
 			"server": schema.ListNestedAttribute{
-				Computed: true,
+				Description: "List of servers connected to vSwitch.",
+				Computed:    true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"server_ip": schema.StringAttribute{
-							Computed: true,
+							Description: "IPv4 of server.",
+							Computed:    true,
 						},
 						"server_ipv6_net": schema.StringAttribute{
-							Computed: true,
+							Description: "IPv6 of server.",
+							Computed:    true,
 						},
 						"server_number": schema.Int64Attribute{
-							Computed: true,
+							Description: "Server ID",
+							Computed:    true,
 						},
 						"status": schema.StringAttribute{
-							Computed: true,
+							Description: "Server status",
+							Computed:    true,
 						},
 					},
 				},
 			},
 			"subnet": schema.ListNestedAttribute{
-				Computed: true,
+				Description: "List of additional subnets on vSwitch.",
+				Computed:    true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"ip": schema.StringAttribute{
-							Computed: true,
+							Description: "IP on subnet",
+							Computed:    true,
 						},
 						"mask": schema.StringAttribute{
-							Computed: true,
+							Description: "Subnet mask",
+							Computed:    true,
 						},
 						"gateway": schema.StringAttribute{
-							Computed: true,
+							Description: "Subnet gateway",
+							Computed:    true,
 						},
 					},
 				},
 			},
 			"cloud_network": schema.ListNestedAttribute{
-				Computed: true,
+				Description: "List of cloud networks attached to vSwitch",
+				Computed:    true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"id": schema.Int64Attribute{
-							Computed: true,
+							Description: "Cloud network ID",
+							Computed:    true,
 						},
 						"ip": schema.StringAttribute{
-							Computed: true,
+							Description: "vSwitch subnet address on cloud network.",
+							Computed:    true,
 						},
 						"mask": schema.Int64Attribute{
-							Computed: true,
+							Description: "vSwitch subnet mask on cloud network.",
+							Computed:    true,
 						},
 						"gateway": schema.StringAttribute{
-							Computed: true,
+							Description: "Gateway IP on vSwitch subnet.",
+							Computed:    true,
 						},
 					},
 				},

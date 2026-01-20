@@ -1,3 +1,6 @@
+// Copyright (c) HashiCorp, Inc.
+// SPDX-License-Identifier: MPL-2.0
+
 package provider
 
 import (
@@ -51,16 +54,20 @@ func (p *hrobotProvider) Metadata(_ context.Context, _ provider.MetadataRequest,
 // Schema defines the provider-level schema for configuration data.
 func (p *hrobotProvider) Schema(_ context.Context, _ provider.SchemaRequest, resp *provider.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		Description: "HRobot provider configuration.",
 		Attributes: map[string]schema.Attribute{
 			"url": schema.StringAttribute{
-				Optional: true,
+				Description: "Base URL of hetzner robot webservice.",
+				Optional:    true,
 			},
 			"username": schema.StringAttribute{
-				Required: true,
+				Description: "Username for hetzner robot webservice",
+				Required:    true,
 			},
 			"password": schema.StringAttribute{
-				Required:  true,
-				Sensitive: true,
+				Description: "Password for hetzner robot webservice",
+				Required:    true,
+				Sensitive:   true,
 			},
 		},
 	}

@@ -1,15 +1,15 @@
 terraform {
-  required_version = "1.9.0"
   required_providers {
     hrobot = {
-      source = "registry.terraform.io/suyash-811/hrobot"
+      source  = "registry.terraform.io/suyash-811/hrobot"
+      version = ">= 0.1.0"
     }
   }
 }
 
 provider "hrobot" {
-  username = ""
-  password = ""
+  username = "webservice_username"
+  password = "supersecretpassword"
 }
 
 data "hrobot_vswitch" "example" {
